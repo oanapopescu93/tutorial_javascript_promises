@@ -1,0 +1,58 @@
+<html>
+	<head>
+		<title>Promise</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">		
+	</head>
+	<body>
+		<p id="promise" class="promise"></p>
+	</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(function(){
+	
+		function oana01(){
+			return new Promise(function(resolve, reject){
+				setTimeout(function(){
+					console.warn('oana01');	
+					resolve(true);					
+				}, 20);
+				
+			});
+		}
+		
+		function oana02(){
+			return new Promise(function(resolve, reject){
+				setTimeout(function(){
+					console.warn('oana02');
+					resolve(true);
+				}, 10);
+			});
+		}
+		
+		function oana03(){
+			return new Promise(function(resolve, reject){
+				setTimeout(function(){
+					console.warn('oana03');
+					resolve(true);
+				}, 30);
+			});
+		}
+		
+		var promises = [];		
+		promises[0] = oana01();
+		promises[1] = oana02();
+		promises[2] = oana03();
+		
+		
+		Promise.all(promises).then(function(result){
+			console.warn('finished oana');
+		});
+		
+	});
+</script>
