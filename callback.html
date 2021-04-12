@@ -1,1 +1,37 @@
+<html>
+	<head>
+		<title>Promise</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">		
+	</head>
+	<body>
+		<p id="callback" class="callback"></p>
+	</body>
+</html>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+<script>
+	$(document).ready(function(){	
+    
+    // check if element is loaded every 100 milisecs and if yes then do a callback.
+    
+		var waitForEl = function(selector, callback) {
+          if ($(selector).length > 0) {
+              callback();
+          } else {
+              setTimeout(function() {
+                  console.log('zzz1', $('#mapDiv_image').length)
+                  waitForEl(selector, callback);                            
+              }, 100);
+          }
+      };
+
+      waitForEl('#callback', function() {
+          console.log('zzz2', $('#mapDiv_image').length);
+          console.log('MORE CODE');
+      });
+	});
+</script>
